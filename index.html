@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusMind AI | Revolutionary Document Intelligence Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particleCanvas" class="particle-background"></div>
+    
+    <!-- Glassmorphism Header -->
+    <header class="nexus-header">
+        <div class="header-glass">
+            <div class="header-content">
+                <!-- Animated Logo Section -->
+                <div class="logo-section">
+                    <div class="holographic-logo">
+                        <div class="logo-core">🧠</div>
+                        <div class="logo-rings">
+                            <div class="ring ring-1"></div>
+                            <div class="ring ring-2"></div>
+                            <div class="ring ring-3"></div>
+                        </div>
+                    </div>
+                    <div class="brand-info">
+                        <h1 class="nexus-title">NexusMind AI</h1>
+                        <p class="nexus-subtitle">Revolutionary Document Intelligence</p>
+                    </div>
+                </div>
+
+                <!-- AI Agent Status Panel -->
+                <div class="agent-status-panel">
+                    <div class="status-indicator active">
+                        <div class="pulse-dot"></div>
+                        <span>6 AI Agents Online</span>
+                    </div>
+                    <div class="collaboration-users">
+                        <div class="user-avatar online" title="Alex - Legal Analyst">👨‍💼</div>
+                        <div class="user-avatar online" title="Sarah - Compliance Officer">👩‍⚖️</div>
+                        <div class="user-avatar away" title="Mike - Data Scientist">👨‍💻</div>
+                    </div>
+                </div>
+
+                <!-- Voice Interface Button -->
+                <div class="voice-interface">
+                    <button class="voice-btn" id="voiceBtn">
+                        <i class="fas fa-microphone"></i>
+                        <div class="voice-waves">
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                            <div class="wave"></div>
+                        </div>
+                    </button>
+                    <span class="voice-status">Voice Ready</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Layout -->
+    <main class="nexus-dashboard">
+        <!-- Left Panel: AI Agent Command Center -->
+        <aside class="agent-command-center">
+            <div class="panel-header">
+                <h3>AI Agent Ecosystem</h3>
+                <div class="sync-indicator">
+                    <div class="sync-dot"></div>
+                    <span>Real-time Sync</span>
+                </div>
+            </div>
+            
+            <div class="agent-grid" id="agentGrid">
+                <!-- AI Agents will be populated by JavaScript -->
+            </div>
+
+            <!-- Gamification Panel -->
+            <div class="gamification-panel">
+                <h4>Progress & Achievements</h4>
+                <div class="level-progress">
+                    <div class="level-info">
+                        <span class="current-level">AI Whisperer</span>
+                        <span class="xp-counter">2,847 XP</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 68%"></div>
+                    </div>
+                </div>
+                <div class="achievement-badges">
+                    <div class="badge earned" title="First Analysis">🎖️</div>
+                    <div class="badge earned" title="Speed Demon">⚡</div>
+                    <div class="badge earned" title="Accuracy Expert">🎯</div>
+                    <div class="badge locked" title="Collaboration Champion">🤝</div>
+                    <div class="badge locked" title="Blockchain Validator">🔗</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Panel: Main Workspace -->
+        <section class="main-workspace">
+            <!-- Holographic Tab Navigation -->
+            <nav class="holo-tabs">
+                <button class="holo-tab active" data-tab="upload">
+                    <i class="fas fa-upload"></i>
+                    <span>Neural Upload</span>
+                </button>
+                <button class="holo-tab" data-tab="processing">
+                    <i class="fas fa-brain"></i>
+                    <span>AI Processing</span>
+                </button>
+                <button class="holo-tab" data-tab="visualization">
+                    <i class="fas fa-cube"></i>
+                    <span>3D Semantic Map</span>
+                </button>
+                <button class="holo-tab" data-tab="query">
+                    <i class="fas fa-search"></i>
+                    <span>Neural Query</span>
+                </button>
+                <button class="holo-tab" data-tab="blockchain">
+                    <i class="fas fa-link"></i>
+                    <span>Blockchain Verify</span>
+                </button>
+            </nav>
+
+            <!-- Tab Content Areas -->
+            <div class="workspace-content">
+                <!-- Neural Upload Panel -->
+                <div id="upload" class="tab-panel active">
+                    <div class="neural-upload-zone">
+                        <div class="upload-hologram">
+                            <div class="hologram-core">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <div class="hologram-rings">
+                                <div class="holo-ring ring-1"></div>
+                                <div class="holo-ring ring-2"></div>
+                            </div>
+                        </div>
+                        <div class="upload-content">
+                            <h3>Neural Document Ingestion</h3>
+                            <p>Drop documents into the quantum processing chamber</p>
+                            <div class="drop-zone" id="quantumDropZone">
+                                <div class="quantum-particles">
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                    <div class="particle"></div>
+                                </div>
+                                <button class="quantum-btn" onclick="document.getElementById('neuralFileInput').click()">
+                                    <span>Select Documents</span>
+                                    <div class="quantum-effect"></div>
+                                </button>
+                                <input type="file" id="neuralFileInput" accept=".pdf,.docx" multiple hidden>
+                            </div>
+                            <div class="sample-loader">
+                                <button class="neural-link-btn" onclick="loadQuantumSample()">
+                                    <i class="fas fa-atom"></i>
+                                    Load Sample Policy Document
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Processing Panel -->
+                <div id="processing" class="tab-panel">
+                    <div class="processing-matrix">
+                        <h3>AI Processing Matrix</h3>
+                        <div class="matrix-grid">
+                            <div class="processing-stage active">
+                                <div class="stage-icon">🔍</div>
+                                <h4>Text Extraction</h4>
+                                <div class="stage-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span>Complete</span>
+                                </div>
+                            </div>
+                            <div class="processing-stage active">
+                                <div class="stage-icon">🧠</div>
+                                <h4>Neural Embedding</h4>
+                                <div class="stage-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span>Complete</span>
+                                </div>
+                            </div>
+                            <div class="processing-stage active">
+                                <div class="stage-icon">🔗</div>
+                                <h4>Semantic Linking</h4>
+                                <div class="stage-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span>Complete</span>
+                                </div>
+                            </div>
+                            <div class="processing-stage ready">
+                                <div class="stage-icon">✨</div>
+                                <h4>Quantum Index</h4>
+                                <div class="stage-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span>Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Visualization Panel -->
+                <div id="visualization" class="tab-panel">
+                    <div class="visualization-chamber">
+                        <h3>3D Semantic Knowledge Graph</h3>
+                        <div class="holographic-display" style="position: relative; height: 400px">
+                            <canvas id="semanticCanvas" width="800" height="400"></canvas>
+                            <div class="holo-overlay">
+                                <div class="holo-controls">
+                                    <button class="holo-control-btn"><i class="fas fa-expand"></i></button>
+                                    <button class="holo-control-btn"><i class="fas fa-sync"></i></button>
+                                    <button class="holo-control-btn"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="semantic-legend">
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #1FB8CD"></div>
+                                <span>Policy Terms</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #FFC185"></div>
+                                <span>Coverage Details</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-indicator" style="background: #B4413C"></div>
+                                <span>Exclusions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neural Query Panel -->
+                <div id="query" class="tab-panel">
+                    <div class="neural-query-interface">
+                        <h3>Neural Query Processing</h3>
+                        <div class="query-chamber">
+                            <div class="query-input-area">
+                                <textarea 
+                                    id="neuralQueryInput" 
+                                    class="neural-input" 
+                                    placeholder="Ask me anything about your documents using natural language..."
+                                    rows="4"
+                                ></textarea>
+                                <div class="input-enhancements">
+                                    <div class="confidence-control">
+                                        <label>Confidence Threshold</label>
+                                        <input type="range" id="confidenceSlider" min="0.5" max="1" step="0.05" value="0.8">
+                                        <span id="confidenceDisplay">0.8</span>
+                                    </div>
+                                    <button class="quantum-process-btn" onclick="processNeuralQuery()">
+                                        <span>Process Query</span>
+                                        <div class="processing-indicator hidden"></div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="sample-queries">
+                                <h4>Quantum Query Samples</h4>
+                                <div class="query-samples" id="quantumSamples">
+                                    <!-- Sample queries populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blockchain Verification Panel -->
+                <div id="blockchain" class="tab-panel">
+                    <div class="blockchain-chamber">
+                        <h3>Blockchain Document Verification</h3>
+                        <div class="blockchain-status">
+                            <div class="blockchain-visual">
+                                <div class="block block-1">
+                                    <div class="block-content">
+                                        <div class="block-hash">0x4A7B...C92F</div>
+                                        <div class="block-status verified">✓ Verified</div>
+                                    </div>
+                                </div>
+                                <div class="block-connector"></div>
+                                <div class="block block-2">
+                                    <div class="block-content">
+                                        <div class="block-hash">0x8E1D...F483</div>
+                                        <div class="block-status verified">✓ Verified</div>
+                                    </div>
+                                </div>
+                                <div class="block-connector"></div>
+                                <div class="block block-3">
+                                    <div class="block-content">
+                                        <div class="block-hash">0x2C9A...B157</div>
+                                        <div class="block-status pending">⏳ Pending</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="verification-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Document Hash:</span>
+                                    <span class="detail-value">SHA-256: 4a7b8c92f...</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Timestamp:</span>
+                                    <span class="detail-value">2025-07-27 12:00:00 UTC</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Network:</span>
+                                    <span class="detail-value">Ethereum Mainnet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Real-time Insights -->
+        <aside class="insights-panel">
+            <div class="panel-header">
+                <h3>Neural Insights</h3>
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>Live Analytics</span>
+                </div>
+            </div>
+
+            <!-- Query Results Display -->
+            <div class="results-chamber" id="resultsDisplay">
+                <div class="no-results">
+                    <div class="hologram-icon">🔮</div>
+                    <p>Process a neural query to see intelligent results here</p>
+                </div>
+            </div>
+
+            <!-- Real-time Analytics -->
+            <div class="analytics-cluster">
+                <h4>Performance Matrix</h4>
+                <div class="metric-pods">
+                    <div class="metric-pod">
+                        <div class="metric-value">2.3s</div>
+                        <div class="metric-label">Avg Response</div>
+                        <div class="metric-trend up">↗ 15%</div>
+                    </div>
+                    <div class="metric-pod">
+                        <div class="metric-value">94%</div>
+                        <div class="metric-label">Accuracy</div>
+                        <div class="metric-trend up">↗ 8%</div>
+                    </div>
+                    <div class="metric-pod">
+                        <div class="metric-value">156</div>
+                        <div class="metric-label">Queries</div>
+                        <div class="metric-trend up">↗ 23%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collaborative Annotations -->
+            <div class="collaboration-hub">
+                <h4>Team Collaboration</h4>
+                <div class="collaboration-feed">
+                    <div class="collab-item">
+                        <div class="user-indicator">👨‍💼</div>
+                        <div class="collab-content">
+                            <span class="user-name">Alex</span>
+                            <span class="collab-action">annotated clause 3.2</span>
+                            <span class="collab-time">2m ago</span>
+                        </div>
+                    </div>
+                    <div class="collab-item">
+                        <div class="user-indicator">👩‍⚖️</div>
+                        <div class="collab-content">
+                            <span class="user-name">Sarah</span>
+                            <span class="collab-action">verified compliance</span>
+                            <span class="collab-time">5m ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Processing Modal -->
+    <div id="quantumModal" class="quantum-modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-chamber">
+            <div class="quantum-processor">
+                <div class="processor-core">
+                    <div class="core-animation">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                        <div class="nucleus">AI</div>
+                    </div>
+                </div>
+                <h3 id="processingTitle">Initializing Neural Processing...</h3>
+                <p id="processingMessage">Preparing quantum analysis chamber</p>
+                <div class="quantum-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quantumProgress"></div>
+                    </div>
+                    <div class="progress-percentage" id="progressPercent">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Neural Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
